@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
+import { RolModule } from './rol/rol.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { UserModule } from './user/user.module';
       synchronize: false,//IMPORTANTE: ESTO NO SE DEBE USAR EN PRODUCCION, PORQUE CADA VEZ QUE SE EJECUTE PERDERA LA INFORMACION DE LA BASE DE DATOS
     }),
     UserModule,
+    RolModule,
   ],
   controllers: [],
   providers: [],

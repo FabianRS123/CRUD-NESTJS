@@ -1,4 +1,5 @@
-import { Column, DeleteDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Rol } from "src/rol/entities/rol.entity";
+import { Column, DeleteDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity()
@@ -30,7 +31,8 @@ export class User {
     @Column({type: 'date', nullable:true})
     dateOfBirth: Date;
 
-    // @DeleteDateColumn()//Te sirve para no borrar el registro, solo lo marca como eliminado
-    // deletedAt: Date;
+    @ManyToOne(() => Rol, (rol) => rol.users)
+    // @JoinColumn({ name: 'rol_id' })  //  CON ESTE PERSONALIZAS EL NOMBRE DE LA COLUMNA EN LA BASE DE DATOS
+    rol: Rol;
 
 }
